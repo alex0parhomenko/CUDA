@@ -1,7 +1,7 @@
 all: solution
 
 solution: solution.cu
-    nvcc solution.cu -o solution
+	nvcc solution.cu -o solution
 
 clean:
-    rm solution
+	rm solution
