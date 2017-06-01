@@ -14,14 +14,13 @@ def main(matrix_size, output_file_matrix, output_file_solution):
     with open(output_file_matrix, 'w') as fout:
         fout.write(str(matrix_size) + '\n')
         for i in range(matrix_size):
-            for j in range(matrix_size + 1):
-                tmp_var = uniform(0, 10)
-                if j == matrix_size:
-                    right_parts[i] = tmp_var
-                else:
-                    matrix[i][j] = tmp_var
-                fout.write(str(tmp_var) + ' ')
-            fout.write('\n')
+            for j in range(matrix_size):
+                matrix[i][j] = uniform(1, matrix_size + 1)
+                
+            matrix[i][i] = sum(matrix[i]) + 1
+            fout.write(' '.join(map(str, matrix[i])) + ' ')    
+            right_parts[i] = uniform(0, matrix_size + 1)
+            fout.write(str(right_parts[i]) + '\n')  
     solution = np.linalg.solve(matrix, right_parts)
     with open(output_file_solution, 'w') as fout:
         for i in range(matrix_size):
