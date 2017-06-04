@@ -4,4 +4,4 @@ solution: solution.cu
 	nvcc solution.cu -o solution
 
 clean:
-	rm solution
+	wrm solution
